@@ -10,13 +10,14 @@ public class TransporterRoom extends Room {
         super(description);
     }
     
-    private String getExitString() {
-        return "Sorry, there are no obvious exits, try 'out'" +
-               "\n" + getItemString();
+    @Override
+    public String getExitString() {
+        return "Sorry, there are no obvious exits, try 'out'";
     }
     
     @Override
     public String getLongDescription() {
-        return "You are " + getShortDescription() + ".\n" + getExitString();
+        return "You are " + getShortDescription()
+                + ".\n" + getExitString() + ".\n" + getItemString();
     }
 }

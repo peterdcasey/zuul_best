@@ -16,6 +16,7 @@
  */
 import java.util.Stack;
 import java.util.HashMap;
+import java.util.List;
 
 public class Game 
 {
@@ -185,24 +186,30 @@ public class Game
     }
     
     private void lookAround() {
-        Room currentRoom = players.get(0).getLocation();
+        Player player = players.get(0);
+        Room currentRoom = player.getLocation();
+        System.out.println("Backpack: " + player.itemString());
         System.out.println(currentRoom.getLongDescription());   
     }
     
     private void pickup() {
-        Room currentRoom = players.get(0).getLocation();
+        Player player = players.get(0);
+        Room currentRoom = player.getLocation();
         System.out.println(currentRoom.getLongDescription());
         System.out.println("What do you want to pick up?");
-        Command command = parser.getCommand();
-        CommandWord word = command.getCommandWord();
-        String item = command.getSecondWord();
-        System.out.println(item);
+        String item = parser.getLine();
         Item theItem = currentRoom.getItem(item);
+        player.addToBackPack(theItem);
         System.out.println("You picked up: "+ theItem);
     }
     
     private void putdown() {
         System.out.println("What do you want to put down?");
-        System.out.println(" --- not implemented --- ");
+        String item = parser.getLine();
+        Player player = players.get(0);
+        Room currentRoom = player.getLocation();
+        Item theItem = player.getItem(item);
+        currentRoom.addItem(theItem);
+        System.out.println("You put down: "+ theItem);
     }
 }

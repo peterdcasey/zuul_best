@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * @author Peter
@@ -16,6 +17,21 @@ public class BackPack {
     public void put(Item item) {
         items.put(item.getDescription(), item);    
     }
+     
+    public String getItemString() {
+        String itemsString = "";   
+        Set<String> keys = items.keySet();
+        
+        for (String item : keys) {
+            itemsString += item + ", ";
+        }
+        
+        if (itemsString.length() > 0) {
+            itemsString = itemsString.substring(0, itemsString.length() - 2);   
+        }
+        return itemsString;
+    }
+
     
     /**
      * ... might return a null

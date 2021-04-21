@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.List;
+import java.util.Arrays;
 
 /**
  * This class is part of the "World of Zuul" application. 
@@ -58,6 +59,17 @@ public class Parser
         }
 
         return new Command(commands.getCommandWord(word1), word2);
+    }
+    
+    public String getLine() 
+    {
+        final String inputLine;   // will hold the full input line
+        String word1 = null;
+        String word2 = null;
+
+        System.out.print("> ");     // print prompt
+        inputLine = reader.nextLine();
+        return inputLine;
     }
 
     /**

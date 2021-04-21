@@ -45,9 +45,13 @@ public class Player {
         backPack.put(item);   
     }
     
-    public Item removeFromBackPack(String description) {
+    public Item getItem(String description) {
          Item item = backPack.remove(description);
          return item;
+    }
+    
+    public String itemString() {
+        return backPack.getItemString();   
     }
     
     /**
